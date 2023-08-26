@@ -10,7 +10,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 
   </head>
-
+<!--Style here test-->
+<style>
+  table {
+  border-collapse: collapse;
+  border: 2px solid black;
+  }
+  
+  #table-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+  	text-align: center;
+  }
+  </style>
   <body>
     
     <div class="container">
@@ -20,6 +37,38 @@
 
       <!-- Create a div to hold the map -->
       <div id="map"></div>
+
+      <!-- Just a simple map legend-->
+      <div id = 'table-container'>
+        <h2> </h2>
+        <table>
+          
+            <tr>
+                <th> Colour </th>
+                <th> Number of applicants </th>
+    
+            </tr>
+            <tr>
+                <td style="background-color: red;"></td>
+                <td> >= 1000 </td>
+                
+            </tr>
+            <tr>
+                <td style="background-color: orange;"></td>
+                <td>>= 100</td>
+                
+            </tr>
+            <tr>
+                <td style="background-color: yellow;"></td>
+                <td>>= 1</td>
+                
+            </tr>
+            <tr>
+              <td style = "background-color: green;"></td>
+              <td> 0</td>
+            </tr>
+        </table>
+        </div>
     </div>
 
     <script src="script.js"> </script>

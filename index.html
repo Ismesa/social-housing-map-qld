@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Social Housing Register Map</title>
+    
+    <!-- Custom link for stylesheet -->
+		<link rel="stylesheet" href="style.css">
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeIVZ71i1HO1GKTMEX2XcIRTC_edpUyXU
     &callback=initMap" async defer></script>
-</head>
-<body>
-    <!-- Create a div to hold the map -->
-    <div id="map" style="height: 500px;"></div>
 
-    <script>
-        // Define the initialization function
-        function initMap() {
-            // Specify the center coordinates for the map
-            var centerCoords = { lat: -27.4705, lng: 153.0260 }; // Brisbane, QLD
+  </head>
+  <body>
+    
+    <div class="container">
+      <header>
+          <h1>Social Housing Register Map</h1>
+      </header>
+      <!-- Create a div to hold the map -->
+      <div id="map"></div>
+    </div>
 
-            // Create a new map instance
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: centerCoords,
-                zoom: 10 // Adjust the zoom level as needed
-            });
-
-            // You can add additional code to customize the map here
-        }
-    </script>
-</body>
+    <script src="script.js"> </script>
+  </body>
 </html>

@@ -12,95 +12,116 @@ function initMap() {
   // Load GeoJSON data to get outline of suburbs
   map.data.loadGeoJson("https://data.gov.au/geoserver/qld-suburb-locality-boundaries-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_6bedcb55_1b1f_457b_b092_58e88952e9f0&outputFormat=json");
 
-  // Define the default style for features
-  var defaultStyle = {
-    strokeWeight: 0.5,
-    fillOpacity: 0.3,  
-    fillColor: "#008000",
-  };
-
-  // Load the CSV data using PapaParse
+  // Load the CSV data and perform map setup when it's loaded
   Papa.parse("data.csv", {
     download: true,
     header: true,
     dynamicTyping: true,
     complete: function(results) {
       var data = results.data;
-
-      // Listen for the 'addfeature' event after GeoJSON data is loaded
-      map.data.addListener("addfeature", function(event) {
-        var feature = event.feature; // Get the current GeoJSON feature
-        var featureSuburbName = feature.getProperty('qld_loca_2');
-
-        // Iterate through each row of CSV data
-        data.forEach(row => {
-          var suburb = row["Suburbs"];
-          if (suburb) {
-            suburb = suburb.toUpperCase();
-            var numApplicants = parseFloat(row["Number"]);
-
-            if (featureSuburbName == suburb) {
-              // Apply the appropriate fillColor based on numApplicants
-              var fillColor = "#008000"; // Default dark green
-              if (numApplicants >= 1000) {
-                fillColor = "#FF0000"; // Red
-              } else if (numApplicants >= 100 && numApplicants < 1000) {
-                fillColor = "#FFA500"; // Orange
-              } else if (numApplicants >= 1 && numApplicants < 100) {
-                fillColor = "#FFFF00"; // Yellow
-              }
-
-              // Override the feature's style
-              map.data.overrideStyle(feature, { fillColor: fillColor });
-              map.data.overrideStyle(feature, { fillOpacity: 0.8 });
-            } 
-          }
-        });
-      });
+      var suburbDict = createSuburbDictionary(data);
+      //console.log(suburbDict);
+      setupMap(map, suburbDict);
     }
   });
+}
 
-  var postHighlightStyle = {
-    fillOpacity: 0.3
-  };
+// This function takes csv data and returns a dictionary where each suburb name is mapped to the number of applicants and percentage
+function createSuburbDictionary(data) {
+  var suburbDictionary = {};
 
-  // Define the highlight style for features during mouseover
-  var highlightStyle = {
-    fillOpacity: 1  // Increase opacity during mouseover
-  };
+  data.forEach(row => {
+    var suburb = row["Suburbs"];
+    if (suburb) {
+      var numApplicants = parseFloat(row["Number"]);
+      var percentage = parseFloat(row["Percentage of total"]);
+      suburbDictionary[suburb.toUpperCase()] = {
+        suburbName: suburb,
+        numApplicants: numApplicants,
+        percentage: percentage.toFixed(4)
+      };
+    }
+  });
+  return suburbDictionary;
+}
 
-  // Set the default style for each feature
-  map.data.setStyle(defaultStyle);
+// Setup the map with data and default styles
+function setupMap(map, suburbDict) {
+  var mapData = map.data;
+
+  mapData.setStyle(function(feature) {
+    var featureSuburbName = feature.getProperty('qld_loca_2');
+    var suburbInfo = suburbDict[featureSuburbName];
+
+    // Define default values
+    var fillColor = "#008000"; // Default dark green
+    var originalFillOpacity = 0.3;
+    var strokeWeight = 0.5;
+
+    if (suburbInfo) {
+      
+      if (suburbInfo.numApplicants >= 300) {
+        fillColor = "#FF0000"; // Red
+        originalFillOpacity = 0.6;
+      } else if (suburbInfo.numApplicants >= 100 && suburbInfo.numApplicants < 300) {
+        fillColor = "#FFA500"; // Orange
+        originalFillOpacity = 0.6;
+      } else if (suburbInfo.numApplicants >= 1 && suburbInfo.numApplicants < 100) {
+        fillColor = "#FFFF00"; // Yellow
+        originalFillOpacity = 0.6;
+      }
+    }
+
+    return {
+      strokeWeight: strokeWeight,
+      fillColor: fillColor,
+      fillOpacity: originalFillOpacity,
+    };
+  });
 
   // Create an InfoWindow to display content on mouseover
   var infoWindow = new google.maps.InfoWindow();
 
-  // Add a mouseover event listener for each feature
-  map.data.addListener("mouseover", function(event) {
-    // Apply the highlight style to the hovered feature
-    map.data.overrideStyle(event.feature, highlightStyle);
+  // Mouseover event listener
+  mapData.addListener("mouseover", function(event) {
+    
+    var featureSuburbName = event.feature.getProperty('qld_loca_2');
+    var suburbInfo = suburbDict[featureSuburbName];
+    var content;
 
-    // Get the suburb name from the feature's properties
-    var suburbName = event.feature.getProperty("qld_loca_2");
+    if (suburbInfo) {
+      content = suburbInfo.suburbName + ": " + suburbInfo.numApplicants + " Application(s) " + "(" + suburbInfo.percentage + "%)";
+    } else {
+      content = featureSuburbName + ": " + "We good here mate"
+    }
 
-    // Get the percentage of social housing applications
-    var percentage = "Test"
-
-    // Construct the InfoWindow content with suburb name and percentage
-    var content = suburbName + ": " + percentage + " % of QLD social housing applications";
-
-    // Update the InfoWindow content with the suburb name
-    infoWindow.setContent(content);
-
-    // Open the InfoWindow at the event's latLng
+    infoWindow.setContent(content);      
     infoWindow.setPosition(event.latLng);
     infoWindow.open(map);
+
+    mapData.overrideStyle(event.feature, { 
+      fillOpacity: 0.8,
+      strokeWeight: 1.5 
+    });
   });
 
-  // Add a mouseout event listener to revert to post highlight style and close InfoWindow
-  map.data.addListener("mouseout", function(event) {
-    map.data.overrideStyle(event.feature, postHighlightStyle);
-    // Close the InfoWindow
+  // Mouseout event listener
+  mapData.addListener("mouseout", function(event) {
+    var featureSuburbName = event.feature.getProperty('qld_loca_2');
+    var suburbInfo = suburbDict[featureSuburbName];
+    var originalFillOpacity;
+
+    if (suburbInfo) {
+      originalFillOpacity = 0.6
+    } else {
+      originalFillOpacity = 0.3;
+    }
+
+    mapData.overrideStyle(event.feature, {
+      fillOpacity: originalFillOpacity,
+      strokeWeight: 0.5
+    });
+
     infoWindow.close();
-  });
-};
+});
+}

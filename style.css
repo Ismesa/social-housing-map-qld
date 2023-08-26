@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0; 
   -webkit-font-smoothing: antialiased;
-  transition: all .3s linear;
 }
 
 .container {
@@ -22,4 +21,10 @@ header {
 #map {
   flex: 1;
   overflow: hidden;
+}
+
+.transition-effect {
+  transition-property: fill-opacity; /* Specify the property you want to transition */
+  transition-duration: 0.3s; /* Duration of the transition */
+  transition-delay: 0.2s; /* Delay before the transition starts */
 }

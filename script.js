@@ -25,21 +25,31 @@ function initMap() {
   // Define the highlight style for features during mouseover
   var highlightStyle = {
     strokeWeight: 0.5,
-    fillOpacity: 0  // Increase opacity during mouseover
+    fillOpacity: 0.2  // Increase opacity during mouseover
   };
 
   // Set the default style for each feature
   map.data.setStyle(defaultStyle);
 
   // Create an InfoWindow to display content on mouseover
-  var infoWindow = new google.maps.InfoWindow({
-    content: "% of social housing applicants"  // Content to display in the InfoWindow
-  });
+  var infoWindow = new google.maps.InfoWindow();
 
   // Add a mouseover event listener for each feature
   map.data.addListener("mouseover", function(event) {
     // Apply the highlight style to the hovered feature
     map.data.overrideStyle(event.feature, highlightStyle);
+
+    // Get the suburb name from the feature's properties
+    var suburbName = event.feature.getProperty("qld_loca_2");
+
+    // Get the percentage of social housing applications
+    var percentage = "Test"
+
+    // Construct the InfoWindow content with suburb name and percentage
+    var content = suburbName + ": " + percentage + " % of social housing applications";
+
+    // Update the InfoWindow content with the suburb name
+    infoWindow.setContent(content);
 
     // Open the InfoWindow at the event's latLng
     infoWindow.setPosition(event.latLng);

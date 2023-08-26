@@ -15,4 +15,43 @@ function initMap() {
   map.data.setStyle({
     strokeWeight: 0.5
   });
+
+  // Define the default style for features
+  var defaultStyle = {
+    strokeWeight: 0.5,
+    fillOpacity: 0  // Adjust the opacity as needed
+  };
+
+  // Define the highlight style for features during mouseover
+  var highlightStyle = {
+    strokeWeight: 0.5,
+    fillOpacity: 0  // Increase opacity during mouseover
+  };
+
+  // Set the default style for each feature
+  map.data.setStyle(defaultStyle);
+
+  // Create an InfoWindow to display content on mouseover
+  var infoWindow = new google.maps.InfoWindow({
+    content: "% of social housing applicants"  // Content to display in the InfoWindow
+  });
+
+  // Add a mouseover event listener for each feature
+  map.data.addListener("mouseover", function(event) {
+    // Apply the highlight style to the hovered feature
+    map.data.overrideStyle(event.feature, highlightStyle);
+
+    // Open the InfoWindow at the event's latLng
+    infoWindow.setPosition(event.latLng);
+    infoWindow.open(map);
+  });
+
+  // Add a mouseout event listener to revert to default style and close InfoWindow
+  map.data.addListener("mouseout", function(event) {
+    // Revert to the default style for the feature
+    map.data.overrideStyle(event.feature, defaultStyle);
+
+    // Close the InfoWindow
+    infoWindow.close();
+  });
 };

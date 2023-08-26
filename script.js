@@ -1,6 +1,5 @@
 // Define the initialization function
 function initMap() {
-
   // Specify the center coordinates for the map
   var centerCoords = { lat: -27.4705, lng: 153.0260 }; // Brisbane, QLD
 
@@ -50,6 +49,7 @@ function initMap() {
               } else if (numApplicants >= 1 && numApplicants < 100) {
                 fillColor = "#FFFF00"; // Yellow
               }
+
               // Override the feature's style
               map.data.overrideStyle(feature, { fillColor: fillColor });
               map.data.overrideStyle(feature, { fillOpacity: 0.8 });
@@ -60,13 +60,13 @@ function initMap() {
     }
   });
 
-  // Define the highlight style for features during mouseover
-  var highlightStyle = {
-    fillOpacity: 0.8  // Increase opacity during mouseover
-  };
-
   var postHighlightStyle = {
     fillOpacity: 0.3
+  };
+
+  // Define the highlight style for features during mouseover
+  var highlightStyle = {
+    fillOpacity: 1  // Increase opacity during mouseover
   };
 
   // Set the default style for each feature
@@ -97,11 +97,9 @@ function initMap() {
     infoWindow.open(map);
   });
 
-  // Add a mouseout event listener to revert to default style and close InfoWindow
+  // Add a mouseout event listener to revert to post highlight style and close InfoWindow
   map.data.addListener("mouseout", function(event) {
-    // Revert to the default style for the feature
     map.data.overrideStyle(event.feature, postHighlightStyle);
-
     // Close the InfoWindow
     infoWindow.close();
   });

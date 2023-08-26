@@ -13,7 +13,7 @@ function initMap() {
   map.data.loadGeoJson("https://data.gov.au/geoserver/qld-suburb-locality-boundaries-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_6bedcb55_1b1f_457b_b092_58e88952e9f0&outputFormat=json");
 
   // Load the CSV data and perform map setup when it's loaded
-  Papa.parse("data.csv", {
+  Papa.parse("2023data.csv", {
     download: true,
     header: true,
     dynamicTyping: true,

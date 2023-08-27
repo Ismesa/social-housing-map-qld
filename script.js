@@ -90,7 +90,7 @@ function setupMap(map, suburbDict) {
     var content;
 
     if (suburbInfo) {
-      content = suburbInfo.suburbName + ": " + suburbInfo.numApplicants + " Application(s) " + "(" + suburbInfo.percentage + "%)";
+      content = suburbInfo.suburbName.toUpperCase() + ": " + suburbInfo.numApplicants + " Application(s) " + "(" + suburbInfo.percentage + "%)";
     } else {
       content = featureSuburbName + ": " + "We good here mate"
     }

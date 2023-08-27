@@ -1,4 +1,4 @@
-# Social Housing Register Map
+# Introduction
 A map visualisation project that displays non-live datasets from social housing register (QLD for now) and live APIs onto Google Maps. This project is relevant to UN's Sustainable Development Goal 11: Make cities and human settlements inclusive, safe, resilient and sustainable. This project was created for UQCS Hackathon 2023. 
 Team: Homeless Mappers
 Teammates: @zainechia @harsharjoshi @Ismesa
@@ -23,8 +23,8 @@ SHM does not require much maintenance as the data is not updated in real-time, r
 * HTML, CSS, Javascript: language used in web development
 * ChatGPT: AI tool which helped with HTML, Javascript, CSS programming and specifically to read/clean up .csv dataset files. 
 * Dataset Sourced From:
-** https://data.gov.au/dataset/ds-dga-6bedcb55-1b1f-457b-b092-58e88952e9f0/details
-** https://www.data.qld.gov.au/dataset/social-housing-register/resource/9fd99c88-c117-4e30-8b4b-54ac24170b80?inner_span=True
+  Federal [Australian Government] (https://data.gov.au/dataset/ds-dga-6bedcb55-1b1f-457b-b092-58e88952e9f0/details), and;
+  State-Wide [Queensland Government] (https://www.data.qld.gov.au/dataset/social-housing-register/resource/9fd99c88-c117-4e30-8b4b-54ac24170b80?inner_span=True)
 
 ## Functionality
 

@@ -21,7 +21,7 @@ SHM does not require much maintenance as the data is not updated in real-time, r
 * Excel: Cleaning up the data, as raw data was in .csv
 * PapaParse: Primary command (sourced by ChatGBT) to read csv files
 * HTML, CSS, Javascript: language used in web development
-* ChatGBT: AI tool which helped with HTML, Javascript, CSS programming and specifically to read/clean up .csv dataset files. 
+* ChatGPT: AI tool which helped with HTML, Javascript, CSS programming and specifically to read/clean up .csv dataset files. 
 * Dataset Sourced From:
 ** https://data.gov.au/dataset/ds-dga-6bedcb55-1b1f-457b-b092-58e88952e9f0/details
 ** https://www.data.qld.gov.au/dataset/social-housing-register/resource/9fd99c88-c117-4e30-8b4b-54ac24170b80?inner_span=True
@@ -37,4 +37,6 @@ Location based data was another defining feature of the product. Free Google API
 
 # Conclusions and Future Scope
 
-Overall, SHM QLD was created to allow users to have an interactive platform whereby they can easily use a visual reference point to pinpoint available areas for social housing. Ideally, it is aimed for future scope to market this product toward low income areas and families. 
+Overall, SHM QLD was created to allow users to have an interactive platform whereby they can easily use a visual reference point to pinpoint available areas for social housing. Ideally, it is aimed for future scope to market this product toward low income areas and families. In the future, the team would like to implement more user-focused features including locations with the highest accessibility housing. 
+
+Features wise, increased data visualisation, specifically year-by-year comparative data (i.e. showing percentage change in terms of demand) would be a focus of Homeless Mappers. Further, having a better interface for metadata such that those applying can compare years and trends on the same map via layering - an option is to make the above bar have a multi-select tool. Finally, the average public house pricing should also be included in each locality. 

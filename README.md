@@ -1,5 +1,7 @@
 # Social Housing Register Map
-Map Vizualisation for social housing demand created for UQCS Hackathon 2023. Teammates: @zainechia @harsharjoshi @Ismesa
+A map visualisation project that displays non-live datasets from social housing register (QLD for now) and live APIs onto Google Maps. This project is relevant to UN's Sustainable Development Goal 11: Make cities and human settlements inclusive, safe, resilient and sustainable. This project was created for UQCS Hackathon 2023. 
+Team: Homeless Mappers
+Teammates: @zainechia @harsharjoshi @Ismesa
 
 # Social Housing Register Map (Beta) - QLD
 

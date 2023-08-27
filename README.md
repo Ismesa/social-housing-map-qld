@@ -1,9 +1,12 @@
-# Social Housing Register Map QLD
+# Social Housing Register Map
 Map Vizualisation for social housing demand created for UQCS Hackathon 2023. Teammates: @zainechia @harsharjoshi @Ismesa
 
-# QLD Social Housing Register Map (Beta)
+# Social Housing Register Map (Beta) - QLD
 
 This file details the specifics of our informative website – QLD Social Housing Map (Beta) (SHR). Due to rising house prices around Australia, including Queensland, the demand for public housing may increase in the near future. To prepare for such an event, or even just ease this future demand and distribution across Queensland – team Trust It Works has created this website. 
+
+<img width="1511" alt="Screenshot 2023-08-27 at 12 28 47 pm" src="https://github.com/Ismesa/social-housing-register-map/assets/74528254/9868c867-a2be-461d-85f3-ff95e40ec837">
+
 
 ## Setup & Running Locally
 

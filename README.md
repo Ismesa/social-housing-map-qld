@@ -14,10 +14,22 @@ This file details the specifics of our informative website – QLD Social Housin
 
 SHR does not require much maintenance as the data is not updated in real-time, rather the website’s static nature acts as a small downfall because year-by-year the total number of applicants must be updated. Similarly, as Google API was used we must monitor changes to our subscription – and have alternative map APIs (e.g. Leaflet, etc.)
 
-### Environment Variables
+## Tools Used
 
-ADD MORE
+* Github/Pages: 
+* Google API: purchased for layering purposes on map
+* GeoJSON: 
+* Excel:
+* PapaParse:
+* HTML, CSS, Javascript: 
+* ChatGBT: AI tool which helped with HTML, Javascript, CSS programming and specifically to read/clean up CSV files
+* Dataset Sourced From:
 
-### Functionality
+## Functionality
 
-ADD MORE 
+When approaching functionality, the primary mission was to utilise publicly available data from Queensland Government's relevant datasets to perform range-based analysis to calculate demand, which have been uploaded as CSV files. Data was cleaned up such that a more concise representation could be demonstrated via Excel. 
+
+* `raw-data` for initial range-based analysis to calculate demand
+* `clean-data` cleaning data and utilising relevant data points to be visualised
+
+Location based data was another defining feature of the product. Free Google API trial was purchased for layering purposes - which the GeoJSON helped defined. A combination of HTML, CSS and javascript aided in the website format of the project. 

@@ -12,17 +12,24 @@ function initMap() {
   // Load GeoJSON data to get outline of suburbs
   map.data.loadGeoJson("https://data.gov.au/geoserver/qld-suburb-locality-boundaries-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_6bedcb55_1b1f_457b_b092_58e88952e9f0&outputFormat=json");
 
-  // Load the CSV data and perform map setup when it's loaded
-  Papa.parse("2023data.csv", {
-    download: true,
-    header: true,
-    dynamicTyping: true,
-    complete: function(results) {
-      var data = results.data;
-      var suburbDict = createSuburbDictionary(data);
-      //console.log(suburbDict);
-      setupMap(map, suburbDict);
-    }
+  // Get the year buttons
+  var buttons = document.querySelectorAll(".year-button");
+  
+  // Add click event listeners to the year buttons
+  buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      // Remove the 'clicked' class from all buttons
+      buttons.forEach(function(btn) {
+        btn.classList.remove("clicked");
+      });
+
+      // Add the 'clicked' class to the clicked button
+      button.classList.add("clicked");
+      
+      var year = button.getAttribute("data-year");
+      //console.log("Button clicked:", year);
+      loadData(map, year);
+    });
   });
 }
 
@@ -43,6 +50,26 @@ function createSuburbDictionary(data) {
     }
   });
   return suburbDictionary;
+}
+
+// Define the data loading function
+function loadData(map, year) {
+  // Clear any existing data layers
+  map.data.forEach(function(feature) {
+    map.data.remove(feature);
+  });
+
+  Papa.parse(year + "data.csv", {
+    download: true,
+    header: true,
+    dynamicTyping: true,
+    complete: function(results) {
+      var data = results.data;
+      var suburbDict = createSuburbDictionary(data);
+      map.data.loadGeoJson("https://data.gov.au/geoserver/qld-suburb-locality-boundaries-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_6bedcb55_1b1f_457b_b092_58e88952e9f0&outputFormat=json");
+      setupMap(map, suburbDict);
+    }
+  });
 }
 
 // Setup the map with data and default styles

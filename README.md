@@ -9,21 +9,22 @@ This file details the specifics of our informative website – QLD Social Housin
 
 <img width="1511" alt="Screenshot 2023-08-27 at 12 28 47 pm" src="https://github.com/Ismesa/social-housing-register-map/assets/74528254/9868c867-a2be-461d-85f3-ff95e40ec837">
 
-
 ## Setup & Running Locally
 
-SHR does not require much maintenance as the data is not updated in real-time, rather the website’s static nature acts as a small downfall because year-by-year the total number of applicants must be updated. Similarly, as Google API was used we must monitor changes to our subscription – and have alternative map APIs (e.g. Leaflet, etc.)
+SHM does not require much maintenance as the data is not updated in real-time, rather the website’s static nature acts as a small downfall because year-by-year the total number of applicants must be updated. Similarly, as Google API was used we must monitor changes to our subscription – and have alternative map APIs (e.g. Leaflet, etc.)
 
 ## Tools Used
 
-* Github/Pages: 
-* Google API: purchased for layering purposes on map
-* GeoJSON: 
-* Excel:
-* PapaParse:
-* HTML, CSS, Javascript: 
-* ChatGBT: AI tool which helped with HTML, Javascript, CSS programming and specifically to read/clean up CSV files
+* Github/Pages: collobartive repository and static website hosting
+* Google API: free trial purchased for layering Queensland suburbs on map
+* GeoJSON: the extension by which layering was possible
+* Excel: Cleaning up the data, as raw data was in .csv
+* PapaParse: Primary command (sourced by ChatGBT) to read csv files
+* HTML, CSS, Javascript: language used in web development
+* ChatGBT: AI tool which helped with HTML, Javascript, CSS programming and specifically to read/clean up .csv dataset files. 
 * Dataset Sourced From:
+** https://data.gov.au/dataset/ds-dga-6bedcb55-1b1f-457b-b092-58e88952e9f0/details
+** https://www.data.qld.gov.au/dataset/social-housing-register/resource/9fd99c88-c117-4e30-8b4b-54ac24170b80?inner_span=True
 
 ## Functionality
 
@@ -33,3 +34,7 @@ When approaching functionality, the primary mission was to utilise publicly avai
 * `clean-data` cleaning data and utilising relevant data points to be visualised
 
 Location based data was another defining feature of the product. Free Google API trial was purchased for layering purposes - which the GeoJSON helped defined. A combination of HTML, CSS and javascript aided in the website format of the project. 
+
+# Conclusions and Future Scope
+
+Overall, SHM QLD was created to allow users to have an interactive platform whereby they can easily use a visual reference point to pinpoint available areas for social housing. Ideally, it is aimed for future scope to market this product toward low income areas and families. 

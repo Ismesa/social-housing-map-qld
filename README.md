@@ -3,7 +3,7 @@ Map Vizualisation for social housing demand created for UQCS Hackathon 2023
 
 # QLD Social Housing Register Map (Beta)
 
-This file details the specifics of our informative website – QLD Social Housing Register Map (Beta) (SHR). Due to rising house prices around Australia, including Queensland, the demand for public housing may increase in the near future. To prepare for such an event, or even just ease this future demand and distribution across Queensland – team Trust It Works has created this website. 
+This file details the specifics of our informative website – QLD Social Housing Map (Beta) (SHR). Due to rising house prices around Australia, including Queensland, the demand for public housing may increase in the near future. To prepare for such an event, or even just ease this future demand and distribution across Queensland – team Trust It Works has created this website. 
 
 ## Setup & Running Locally
 

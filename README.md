@@ -15,11 +15,11 @@ SHM does not require much maintenance as the data is not updated in real-time, r
 
 ## Tools Used
 
-* Github/Pages: collobartive repository and static website hosting
+* Github/Pages: collaborative repository and static website hosting
 * Google API: free trial purchased for layering Queensland suburbs on map
 * GeoJSON: the extension by which layering was possible
 * Excel: Cleaning up the data, as raw data was in .csv
-* PapaParse: Primary command (sourced by ChatGBT) to read csv files
+* PapaParse: Primary command (sourced by ChatGPT) to read csv files
 * HTML, CSS, Javascript: language used in web development
 * ChatGPT: AI tool which helped with HTML, Javascript, CSS programming and specifically to read/clean up .csv dataset files. 
 

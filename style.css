@@ -52,9 +52,13 @@ th, td {
   background-color: #007bff;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .year-button:hover {
+  background-color: #0056b3;
+}
+
+.year-button.clicked {
   background-color: #0056b3;
 }

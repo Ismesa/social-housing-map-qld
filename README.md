@@ -1,5 +1,5 @@
-# supreme-broccoli
-Map Vizualisation for social housing demand created for UQCS Hackathon 2023 
+# Social Housing Register Map QLD
+Map Vizualisation for social housing demand created for UQCS Hackathon 2023. Teammates: @zainechia @harsharjoshi @Ismesa
 
 # QLD Social Housing Register Map (Beta)
 

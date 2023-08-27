@@ -8,10 +8,7 @@ function initMap() {
       center: centerCoords,
       zoom: 10 // Adjust the zoom level as needed
   });
-
-  // Load GeoJSON data to get outline of suburbs
-  map.data.loadGeoJson("https://data.gov.au/geoserver/qld-suburb-locality-boundaries-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_6bedcb55_1b1f_457b_b092_58e88952e9f0&outputFormat=json");
-
+  
   // Get the year buttons
   var buttons = document.querySelectorAll(".year-button");
   
@@ -33,6 +30,26 @@ function initMap() {
   });
 }
 
+// Define the data loading function
+function loadData(map, year) {
+  // Clear any existing data layers
+  map.data.forEach(function(feature) {
+    map.data.remove(feature);
+  });
+
+  Papa.parse("clean-data/" + year + "data.csv", {
+    download: true,
+    header: true,
+    dynamicTyping: true,
+    complete: function(results) {
+      var data = results.data;
+      var suburbDict = createSuburbDictionary(data);
+      map.data.loadGeoJson("https://data.gov.au/geoserver/qld-suburb-locality-boundaries-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_6bedcb55_1b1f_457b_b092_58e88952e9f0&outputFormat=json");
+      setupMap(map, suburbDict);
+    }
+  });
+}
+
 // This function takes csv data and returns a dictionary where each suburb name is mapped to the number of applicants and percentage
 function createSuburbDictionary(data) {
   var suburbDictionary = {};
@@ -50,26 +67,6 @@ function createSuburbDictionary(data) {
     }
   });
   return suburbDictionary;
-}
-
-// Define the data loading function
-function loadData(map, year) {
-  // Clear any existing data layers
-  map.data.forEach(function(feature) {
-    map.data.remove(feature);
-  });
-
-  Papa.parse(year + "data.csv", {
-    download: true,
-    header: true,
-    dynamicTyping: true,
-    complete: function(results) {
-      var data = results.data;
-      var suburbDict = createSuburbDictionary(data);
-      map.data.loadGeoJson("https://data.gov.au/geoserver/qld-suburb-locality-boundaries-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_6bedcb55_1b1f_457b_b092_58e88952e9f0&outputFormat=json");
-      setupMap(map, suburbDict);
-    }
-  });
 }
 
 // Setup the map with data and default styles

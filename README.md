@@ -5,13 +5,15 @@ Teammates: @zainechia @harsharjoshi @Ismesa
 
 # Social Housing Register Map (Beta) - QLD
 
-This file details the specifics of our informative website – QLD Social Housing Map (Beta) (SHR). Due to rising house prices around Australia, including Queensland, the demand for public housing may increase in the near future. To prepare for such an event, or even just ease this future demand and distribution across Queensland – team Trust It Works has created this website. 
+This file details the specifics of our informative website – QLD Social Housing Map (Beta) (SHRM). Due to rising house prices around Australia, including Queensland, the demand for public housing may increase in the near future. To prepare for such an event, or even just ease this future demand and distribution across Queensland – team Trust It Works has created this website. 
 
 <img width="1511" alt="Screenshot 2023-08-27 at 12 28 47 pm" src="https://github.com/Ismesa/social-housing-register-map/assets/74528254/9868c867-a2be-461d-85f3-ff95e40ec837">
 
 ## Setup & Running Locally
 
-SHM does not require much maintenance as the data is not updated in real-time, rather the website’s static nature acts as a small downfall because year-by-year the total number of applicants must be updated. Similarly, as Google API was used we must monitor changes to our subscription – and have alternative map APIs (e.g. Leaflet, etc.)
+SHRM does not require much maintenance as the data is not updated in real-time, rather the website’s static nature acts as a small downfall because year-by-year the total number of applicants must be updated. 
+
+Similarly, as Google API was used we must monitor changes to our subscription – and have alternative map APIs (e.g. Leaflet, etc). If the Google Map does not display the suburbs properly, it means that my Google API Free Trial has expired.
 
 ## Tools Used
 
@@ -38,6 +40,6 @@ Location based data was another defining feature of the product. Free Google API
 
 # Conclusions and Future Scope
 
-Overall, SHM QLD was created to allow users to have an interactive platform whereby they can easily use a visual reference point to pinpoint available areas for social housing. Ideally, it is aimed for future scope to market this product toward low income areas and families. In the future, the team would like to implement more user-focused features including locations with the highest accessibility housing. 
+Overall, SHRM was created to allow users to have an interactive platform whereby they can easily use a visual reference point to pinpoint available areas for social housing. Ideally, it is aimed for future scope to market this product toward low income areas and families. In the future, the team would like to implement more user-focused features including locations with the highest accessibility housing. 
 
 Features wise, increased data visualisation, specifically year-by-year comparative data (i.e. showing percentage change in terms of demand) would be a focus of Homeless Mappers. Further, having a better interface for metadata such that those applying can compare years and trends on the same map via layering - an option is to make the above bar have a multi-select tool. Finally, the average public house pricing should also be included in each locality. 
